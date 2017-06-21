@@ -12,7 +12,13 @@ var params = {screen_name: "lameimpala"};
 function tweet(){
 	client.get("statuses/user_timeline", params, function(error, tweets, response){
 		if (!error) {
-			console.log(JSON.stringify(tweets,null,2));
+			for (var i = 0; i < tweets.length; i++) {
+				console.log("-------------");
+				console.log("@" + tweets[i].user.screen_name + ":");
+				console.log(tweets[i].text);
+				console.log(tweets[i].created_at);
+				console.log("-------------");
+			}
 		}
 	});
 }
