@@ -52,8 +52,25 @@ function movie(){
 			console.log("Starring: " + JSON.parse(body).Actors);
 			console.log("Rotten Tomatoes: " + JSON.parse(body).tomatoURL);
 			console.log("-------------");
-			
 		}
+	});
+}
+
+function doThing(){
+	fs.readFile("random.txt", "utf8", function(err, data){
+		var txtCommand = data.split(",");
+		if (err){
+			return console.log(err);
+		} else if (txtCommand[0] == "my-tweets"){
+			tweet();
+		} else if (txtCommand[0] == "spotify-this-song"){
+			userInput = txtCommand[1];
+			song();
+		} else if (txtCommand[0] == "movie-this"){
+			userInput = txtCommand[1];
+			movie();
+		}
+		
 	});
 }
 
